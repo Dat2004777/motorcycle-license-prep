@@ -11,9 +11,11 @@ import {
   SidebarMenuItem,
 } from "../ui/sidebar";
 import User from "../User";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const AdminSidebar = () => {
+  const location = useLocation();
+
   return (
     <>
       <Sidebar>
@@ -29,7 +31,9 @@ const AdminSidebar = () => {
               Quản lý
             </SidebarGroupLabel>
             <SidebarMenuItem>
-              <SidebarMenuButton>
+              <SidebarMenuButton
+                isActive={location.pathname.startsWith("/admin/questions")}
+              >
                 <Link
                   to={"/admin/questions"}
                   className="flex items-center gap-3"

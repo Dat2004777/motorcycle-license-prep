@@ -1,23 +1,29 @@
 {
   "users": [
     {
-      "id": 1,
       "username": "user",
       "password": "user",
       "name": "Nguyễn Thành Đạt",
-      "role": "user"
+      "role": "user",
+      "id": 1
     },
     {
-      "id": 2,
       "username": "admin",
       "password": "admin",
       "name": "Nguyễn Thành Đạt",
-      "role": "admin"
+      "role": "admin",
+      "id": 2
+    },
+    {
+      "name": "moi",
+      "username": "moi",
+      "password": "123",
+      "role": "user",
+      "id": 3
     }
   ],
   "questions": [
     {
-      "id": 1,
       "questionText": "Hành vi đưa xe cơ giới không bảo đảm tiêu chuẩn an toàn kỹ thuật và bảo vệ môi trường vào tham gia giao thông đường bộ có bị nghiêm cấm không?",
       "category": "concepts",
       "isCritical": true,
@@ -27,10 +33,10 @@
         "C": "Bị nghiêm cấm tuỳ từng trường hợp.",
         "D": "Không bị nghiêm cấm nếu có bảo hiểm."
       },
-      "correctOption": "B"
+      "correctOption": "B",
+      "id": 1
     },
     {
-      "id": 2,
       "questionText": "Biển nào cấm xe máy chuyên dùng và xe mô tô?",
       "category": "signs",
       "isCritical": false,
@@ -40,10 +46,10 @@
         "C": "Biển 2 và 3.",
         "D": "Cả ba biển."
       },
-      "correctOption": "A"
+      "correctOption": "A",
+      "id": 2
     },
     {
-      "id": 3,
       "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
       "category": "shapes",
       "isCritical": false,
@@ -53,10 +59,10 @@
         "C": "Cả hai xe.",
         "D": "Không xe nào vi phạm."
       },
-      "correctOption": "C"
+      "correctOption": "C",
+      "id": 3
     },
     {
-      "id": 4,
       "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
       "category": "shapes",
       "isCritical": false,
@@ -66,10 +72,10 @@
         "C": "Cả hai xe.",
         "D": "Không xe nào vi phạm."
       },
-      "correctOption": "C"
+      "correctOption": "C",
+      "id": 4
     },
     {
-      "id": 5,
       "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
       "category": "shapes",
       "isCritical": false,
@@ -79,7 +85,8 @@
         "C": "Cả hai xe.",
         "D": "Không xe nào vi phạm."
       },
-      "correctOption": "C"
+      "correctOption": "C",
+      "id": 5
     }
   ],
   "categories": [
@@ -100,12 +107,19 @@
     {
       "id": 1,
       "title": "Đề thi số 1",
-      "questionIds": [1, 2, 3]
+      "questionIds": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "id": 2,
       "title": "Đề thi số 2",
-      "questionIds": [2, 3]
+      "questionIds": [
+        2,
+        3
+      ]
     }
   ],
   "histories": [

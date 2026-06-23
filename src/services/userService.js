@@ -26,11 +26,10 @@ const userService = {
   },
 
   register: async (newUser) => {
-    const { id, name, username, password, role } = newUser;
+    const { name, username, password, role } = newUser;
 
     try {
       const res = await axios.post(`http://localhost:3000/users/`, {
-        id,
         name,
         username,
         password,

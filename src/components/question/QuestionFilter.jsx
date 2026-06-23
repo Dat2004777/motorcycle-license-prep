@@ -10,7 +10,13 @@ import {
 import { TriangleAlert } from "lucide-react";
 import { Checkbox } from "../ui/checkbox";
 
-const QuestionFilter = ({ categories }) => {
+const QuestionFilter = ({
+  categories,
+  selectedCategory,
+  isCritical,
+  onChangeSetCategory,
+  onChangeSetCritical,
+}) => {
   return (
     <>
       <Card className="w-full">
@@ -18,7 +24,10 @@ const QuestionFilter = ({ categories }) => {
           <p className="font-semibold uppercase">Danh mục & Phân loại</p>
 
           <div className="mt-4">
-            <Select>
+            <Select
+              onValueChange={onChangeSetCategory}
+              value={selectedCategory}
+            >
               <SelectTrigger className="w-45">
                 <SelectValue placeholder="Danh mục" />
               </SelectTrigger>
@@ -38,7 +47,12 @@ const QuestionFilter = ({ categories }) => {
             <Card className="border border-red-500/50 bg-red-500/5">
               <CardContent>
                 <div className="flex gap-4">
-                  <Checkbox className="mt-0.5" aria-invalid />
+                  <Checkbox
+                    checked={isCritical}
+                    onCheckedChange={onChangeSetCritical}
+                    className="mt-0.5"
+                    aria-invalid
+                  />
                   <div>
                     <div className="flex items-center gap-1 text-red-500">
                       <TriangleAlert size={16} />

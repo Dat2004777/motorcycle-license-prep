@@ -48,7 +48,6 @@ const RegisterPage = () => {
       }
 
       const newUser = {
-        id: allUsers.length === 0 ? 1 : allUsers.length + 1,
         name,
         username,
         password,

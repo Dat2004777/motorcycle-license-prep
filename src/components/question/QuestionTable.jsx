@@ -11,6 +11,7 @@ import { Button } from "../ui/button";
 import { Link } from "react-router";
 
 const QuestionTable = ({ questions, onDeleteClick }) => {
+  const questionLength = questions.length;
   return (
     <>
       <div className="rounded-xl border border-slate-200 bg-white shadow w-full p-8">
@@ -63,7 +64,7 @@ const QuestionTable = ({ questions, onDeleteClick }) => {
                 colSpan={5}
                 className="p-4 text-sm text-muted-foreground font-normal"
               >
-                Hiển thị 1-4 trên tổng số 200 câu hỏi
+                Hiển thị 1-5 trên tổng số {questionLength} câu hỏi
               </TableCell>
             </TableRow>
           </TableFooter>

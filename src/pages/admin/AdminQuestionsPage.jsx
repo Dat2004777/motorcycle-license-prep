@@ -6,40 +6,20 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { useState } from "react";
-import questionService from "@/services/questionService";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { Link } from "react-router";
 import QuestionTable from "@/components/question/QuestionTable";
-import { toast } from "sonner";
+import useQuestion from "@/hooks/useQuestion";
 
 const AdminQuestionsPage = () => {
-  const [questions, setQuestions] = useState([]);
-
-  const fetchQuestions = async () => {
-    const questionsData = await questionService.getAllQuestions();
-    setQuestions(questionsData);
-  };
+  const { questions, fetchQuestions, handleDeleteQuestion } =
+    useQuestion("AdminQuestionsPage");
 
   useEffect(() => {
     fetchQuestions();
-  }, []);
-
-  const handleDeleteQuestion = async (questionId) => {
-    try {
-      const result = await questionService.deleteQuestion(questionId);
-
-      if (result) {
-        toast.success("Xóa câu hỏi thành công");
-      }
-    } catch (error) {
-      console.log("Lỗi khi xóa câu hỏi tại AdminQuestionCreatePage: ", error);
-      toast.error;
-      ("Lỗi khi xóa câu hỏi");
-    }
-  };
+  }, [fetchQuestions]);
 
   return (
     <>

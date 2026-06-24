@@ -1,4 +1,5 @@
 import ExamAnswerItem from "@/components/exam/ExamAnswerItem";
+import ExamDialog from "@/components/exam/ExamDialog";
 import ExamHeader from "@/components/layouts/ExamHeader";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,20 +9,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useAuth } from "@/hooks/useAuth";
 import useExam from "@/hooks/useExam";
 import useQuestion from "@/hooks/useQuestion";
 import { Clock } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 const ExamTestPage = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const { examId } = useParams();
 
-  const { currentExam, fetchExamById } = useExam("ExamTestPage");
+  const {
+    currentExam,
+    fetchExamById,
+    handleSubmitExam: submitExam,
+  } = useExam("ExamTestPage");
   const { questions, fetchQuestions } = useQuestion("ExamTestPage");
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
+
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
   const questionList =
     currentExam?.questionIds && questions.length > 0
@@ -57,6 +68,53 @@ const ExamTestPage = () => {
       </div>
     );
   }
+
+  const handleSubmitExam = async () => {
+    setIsConfirmOpen(false);
+
+    let correctCount = 0;
+    let hasFailedCritical = false;
+    const userAnswersLog = [];
+
+    questionList.forEach((question) => {
+      const userAnswer = answers[question.id];
+      const isCorrect = userAnswer === question.correctOption;
+
+      if (isCorrect) correctCount++;
+      if (!isCorrect && question.isCritical) hasFailedCritical = true;
+
+      userAnswersLog.push({
+        questionId: question.id,
+        selected: userAnswer || "",
+        isCorrect: isCorrect,
+      });
+    });
+
+    const isPassed = correctCount >= 7 && !hasFailedCritical;
+
+    const historyData = {
+      studentId: user.id,
+      examId: Number(examId),
+      examTitle: currentExam.title,
+      date: new Date().toISOString(),
+      score: correctCount,
+      totalQuestions: questionList.length,
+      isPassed: isPassed,
+      failedOnCritical: hasFailedCritical,
+      userAnswers: userAnswersLog,
+    };
+
+    try {
+      const res = await submitExam(historyData);
+      if (res) {
+        toast.success("Nộp bài thành công");
+        navigate("/");
+      }
+    } catch (error) {
+      console.log("Lỗi khi nộp bài tại ExamTestPage: ", error);
+      toast.error("Lỗi khi nộp bài");
+    }
+  };
 
   return (
     <>
@@ -154,10 +212,18 @@ const ExamTestPage = () => {
                   Câu tiếp theo
                 </Button>
               </div>
-              <Button>Nộp bài</Button>
+              <Button onClick={() => setIsConfirmOpen(true)}>Nộp bài</Button>
             </CardContent>
           </Card>
         </div>
+
+        <ExamDialog
+          isConfirmOpen={isConfirmOpen}
+          setIsConfirmOpen={setIsConfirmOpen}
+          completedCount={completedCount}
+          totalQuestions={questionList.length}
+          onExecuteSubmit={handleSubmitExam}
+        />
       </main>
     </>
   );

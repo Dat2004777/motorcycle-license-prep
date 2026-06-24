@@ -1,9 +1,9 @@
-import axios from "axios";
+import api from "@/lib/axios";
 
 const userService = {
   getAllUsers: async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/users/`);
+      const res = await api.get(`/users/`);
       return res.data;
     } catch (error) {
       console.error("Lỗi getAllUsers tại userService: ", error);
@@ -15,9 +15,7 @@ const userService = {
     const { username } = user;
 
     try {
-      const res = await axios.get(
-        `http://localhost:3000/users?username=${username}`,
-      );
+      const res = await api.get(`/users?username=${username}`);
       return res.data;
     } catch (error) {
       console.error("Lỗi login tại userService: ", error);
@@ -29,7 +27,7 @@ const userService = {
     const { name, username, password, role } = newUser;
 
     try {
-      const res = await axios.post(`http://localhost:3000/users/`, {
+      const res = await api.post(`/users/`, {
         name,
         username,
         password,

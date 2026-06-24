@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Badge } from "./ui/badge";
 import {
   Card,
@@ -18,12 +19,14 @@ const TestCard = ({ exam }) => {
             {/* <Badge>Chưa làm</Badge> */}
           </CardTitle>
           <CardDescription>
-            Cấu trúc đề thi chuẩn, thời gian 5 phút. Bao gồm các câu hỏi hay
+            Cấu trúc đề thi chuẩn, thời gian 10 phút. Bao gồm các câu hỏi hay
             gặp.
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Button className="w-full p-6">Bắt đầu làm bài</Button>
+          <Link to={`/exam-test/${exam.id}`}>
+            <Button className="w-full p-6">Bắt đầu làm bài</Button>
+          </Link>
         </CardContent>
       </Card>
     </>

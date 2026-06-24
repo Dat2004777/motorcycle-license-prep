@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 export default function useExam(usingPage) {
   const [exams, setExams] = useState([]);
+  const [currentExam, setCurrentExam] = useState();
 
   const fetchExams = useCallback(async () => {
     try {
@@ -15,8 +16,23 @@ export default function useExam(usingPage) {
     }
   }, [usingPage]);
 
+  const fetchExamById = useCallback(
+    async (id) => {
+      try {
+        const res = await examService.getExamById(id);
+        setCurrentExam(res);
+      } catch (error) {
+        console.log(`Lỗi fetchExamById tại ${usingPage}: `, error);
+        toast.error("Lỗi khi lấy thông tin đề thi");
+      }
+    },
+    [usingPage],
+  );
+
   return {
     exams,
+    currentExam,
     fetchExams,
+    fetchExamById,
   };
 }

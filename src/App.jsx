@@ -6,7 +6,7 @@ import RegisterPage from "./pages/auth/RegisterPage";
 import AdminQuestionsPage from "./pages/admin/AdminQuestionsPage";
 import AdminQuestionCreatePage from "./pages/admin/AdminQuestionCreatePage";
 import AdminQuestionUpdatePage from "./pages/admin/AdminQuestionUpdatePage";
-import ExamTest from "./pages/user/ExamTest";
+import ExamTestPage from "./pages/user/ExamTestPage";
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        <Route path="/exam-test/:examId" element={<ExamTest />} />
+        <Route path="/exam-test/:examId" element={<ExamTestPage />} />
 
         <Route path="/admin/questions" element={<AdminQuestionsPage />} />
         <Route

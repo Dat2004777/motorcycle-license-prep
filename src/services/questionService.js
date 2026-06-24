@@ -1,9 +1,9 @@
-import axios from "axios";
+import api from "@/lib/axios";
 
 const questionService = {
   getAllQuestions: async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/questions/`);
+      const res = await api.get(`/questions/`);
       return res.data;
     } catch (error) {
       console.error("Lỗi getAllQuestions tại questionService: ", error);
@@ -13,7 +13,7 @@ const questionService = {
 
   getAllCategories: async () => {
     try {
-      const res = await axios.get(`http://localhost:3000/categories`);
+      const res = await api.get(`/categories`);
       return res.data;
     } catch (error) {
       console.error("Lỗi getAllCategories tại questionService: ", error);
@@ -26,7 +26,7 @@ const questionService = {
       questionData;
 
     try {
-      const res = await axios.post("http://localhost:3000/questions/", {
+      const res = await api.post("/questions/", {
         questionText,
         category,
         isCritical,
@@ -42,9 +42,7 @@ const questionService = {
 
   deleteQuestion: async (questionId) => {
     try {
-      const res = await axios.delete(
-        `http://localhost:3000/questions/${questionId}`,
-      );
+      const res = await api.delete(`/questions/${questionId}`);
       return res.data;
     } catch (error) {
       console.log("Lỗi deleteQuestion tại questionService: ", error);
@@ -54,9 +52,7 @@ const questionService = {
 
   getQuestionById: async (questionId) => {
     try {
-      const res = await axios.get(
-        `http://localhost:3000/questions/${questionId}`,
-      );
+      const res = await api.get(`/questions/${questionId}`);
       return res.data;
     } catch (error) {
       console.log("Lỗi getQuestionById tại questionService: ", error);
@@ -69,16 +65,13 @@ const questionService = {
       questionData;
 
     try {
-      const res = await axios.put(
-        `http://localhost:3000/questions/${questionId}`,
-        {
-          questionText,
-          category,
-          isCritical,
-          options,
-          correctOption,
-        },
-      );
+      const res = await api.put(`/questions/${questionId}`, {
+        questionText,
+        category,
+        isCritical,
+        options,
+        correctOption,
+      });
       return res.data;
     } catch (error) {
       console.log("Lỗi updateQuestion tại questionService: ", error);

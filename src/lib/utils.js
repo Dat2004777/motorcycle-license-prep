@@ -34,3 +34,9 @@ export const historyDate = (date) => {
 export const historyResult = (isPassed) => {
   return isPassed ? "Đạt" : "Không đạt";
 };
+
+export const formatTime = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+};

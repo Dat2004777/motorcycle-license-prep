@@ -13,11 +13,14 @@ import { useAuth } from "@/hooks/useAuth";
 import useExam from "@/hooks/useExam";
 import useQuestion from "@/hooks/useQuestion";
 import { Clock } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router";
 import { toast } from "sonner";
+import { formatTime } from "@/lib/utils";
 
 const ExamTestPage = () => {
+  const submitRef = useRef();
+
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,6 +37,9 @@ const ExamTestPage = () => {
   const [answers, setAnswers] = useState({});
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
+  const [timeLeft, setTimeLeft] = useState(600);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [randomQuestionIds, setRandomQuestionIds] = useState(
     location.state?.randomQuestionIds || [],
@@ -88,15 +94,9 @@ const ExamTestPage = () => {
     }
   }, [examId, questions, randomQuestionIds]);
 
-  if (questionList.length === 0) {
-    return (
-      <div className="flex h-screen items-center justify-center text-muted-foreground">
-        Đang tải câu hỏi đề thi ...
-      </div>
-    );
-  }
-
   const handleSubmitExam = async () => {
+    if (isSubmitted) return;
+    setIsSubmitted(true);
     setIsConfirmOpen(false);
 
     let correctCount = 0;
@@ -143,6 +143,38 @@ const ExamTestPage = () => {
     }
   };
 
+  useEffect(() => {
+    submitRef.current = handleSubmitExam;
+  });
+
+  useEffect(() => {
+    if (questionList.length === 0) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          toast.warning("Hết thời gian làm bài. Bài thi đang được tự động nộp");
+          if (submitRef.current) {
+            submitRef.current();
+          }
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [questionList.length]);
+
+  if (questionList.length === 0) {
+    return (
+      <div className="flex h-screen items-center justify-center text-muted-foreground">
+        Đang tải câu hỏi đề thi ...
+      </div>
+    );
+  }
+
   return (
     <>
       <ExamHeader setIsConfirmOpen={setIsConfirmOpen} />
@@ -179,7 +211,7 @@ const ExamTestPage = () => {
                   <CardDescription>Thời gian còn lại</CardDescription>
                   <CardTitle className="flex items-center gap-2 justify-center">
                     <Clock />
-                    <span className="text-4xl">18:42</span>
+                    <span className="text-4xl">{formatTime(timeLeft)}</span>
                   </CardTitle>
                 </CardHeader>
               </Card>

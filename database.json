@@ -13,13 +13,6 @@
       "name": "Nguyễn Thành Đạt",
       "role": "admin",
       "id": 2
-    },
-    {
-      "name": "moi",
-      "username": "moi",
-      "password": "123",
-      "role": "user",
-      "id": 3
     }
   ],
   "questions": [
@@ -61,110 +54,6 @@
       },
       "correctOption": "C",
       "id": 3
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 4
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 5
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 6
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 7
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 8
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 9
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 10
-    },
-    {
-      "questionText": "Theo tín hiệu đèn của xe cơ giới, xe nào vi phạm quy tắc giao thông?",
-      "category": "signs",
-      "isCritical": false,
-      "options": {
-        "A": "Xe con.",
-        "B": "Xe mô tô.",
-        "C": "Cả hai xe.",
-        "D": "Không xe nào vi phạm."
-      },
-      "correctOption": "D",
-      "id": 11
     }
   ],
   "categories": [
@@ -188,9 +77,7 @@
       "questionIds": [
         1,
         2,
-        3,
-        4,
-        5
+        3
       ]
     },
     {
@@ -263,35 +150,25 @@
       "studentId": 2,
       "examId": 1,
       "examTitle": "Đề thi số 1",
-      "date": "2026-06-25T08:14:11.251Z",
-      "score": 1,
-      "totalQuestions": 5,
+      "date": "2026-06-25T09:03:59.742Z",
+      "score": 0,
+      "totalQuestions": 3,
       "isPassed": false,
       "failedOnCritical": true,
       "userAnswers": [
         {
           "questionId": 1,
-          "selected": "A",
+          "selected": "",
           "isCorrect": false
         },
         {
           "questionId": 2,
-          "selected": "B",
+          "selected": "",
           "isCorrect": false
         },
         {
           "questionId": 3,
-          "selected": "C",
-          "isCorrect": true
-        },
-        {
-          "questionId": 4,
-          "selected": "C",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "selected": "C",
+          "selected": "",
           "isCorrect": false
         }
       ],
@@ -299,215 +176,31 @@
     },
     {
       "studentId": 2,
-      "examId": 2,
-      "examTitle": "Đề thi số 2",
-      "date": "2026-06-25T08:32:25.172Z",
-      "score": 1,
-      "totalQuestions": 2,
+      "examId": 1,
+      "examTitle": "Đề thi số 1",
+      "date": "2026-06-25T09:03:59.743Z",
+      "score": 0,
+      "totalQuestions": 3,
       "isPassed": false,
-      "failedOnCritical": false,
+      "failedOnCritical": true,
       "userAnswers": [
         {
+          "questionId": 1,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
           "questionId": 2,
-          "selected": "B",
+          "selected": "",
           "isCorrect": false
         },
         {
           "questionId": 3,
-          "selected": "C",
-          "isCorrect": true
+          "selected": "",
+          "isCorrect": false
         }
       ],
       "id": 4
-    },
-    {
-      "studentId": 2,
-      "examId": "random",
-      "examTitle": "Đề thi ngẫu nhiên",
-      "date": "2026-06-25T08:39:18.220Z",
-      "score": 0,
-      "totalQuestions": 10,
-      "isPassed": false,
-      "failedOnCritical": false,
-      "userAnswers": [
-        {
-          "questionId": 7,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 5,
-          "selected": "",
-          "isCorrect": false
-        }
-      ],
-      "id": 5
-    },
-    {
-      "studentId": 2,
-      "examId": "random",
-      "examTitle": "Đề thi ngẫu nhiên",
-      "date": "2026-06-25T08:52:44.847Z",
-      "score": 0,
-      "totalQuestions": 10,
-      "isPassed": false,
-      "failedOnCritical": true,
-      "userAnswers": [
-        {
-          "questionId": 7,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 1,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 3,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "selected": "",
-          "isCorrect": false
-        }
-      ],
-      "id": 6
-    },
-    {
-      "studentId": 2,
-      "examId": "random",
-      "examTitle": "Đề thi ngẫu nhiên",
-      "date": "2026-06-25T08:53:59.517Z",
-      "score": 0,
-      "totalQuestions": 10,
-      "isPassed": false,
-      "failedOnCritical": true,
-      "userAnswers": [
-        {
-          "questionId": 3,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 7,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 2,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 1,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 9,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 8,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 4,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 6,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 11,
-          "selected": "",
-          "isCorrect": false
-        },
-        {
-          "questionId": 10,
-          "selected": "",
-          "isCorrect": false
-        }
-      ],
-      "id": 7
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

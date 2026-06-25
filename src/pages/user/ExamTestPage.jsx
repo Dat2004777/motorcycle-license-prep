@@ -35,12 +35,22 @@ const ExamTestPage = () => {
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 
+  const [randomQuestions, setRandomQuestions] = useState(
+    location.state?.randomQuestionIds || [],
+  );
+
   const questionList =
-    currentExam?.questionIds && questions.length > 0
-      ? questions.filter((question) =>
-          currentExam.questionIds.includes(question.id),
-        )
-      : [];
+    examId === "random"
+      ? questions.length > 0 && randomQuestions.length > 0
+        ? randomQuestions
+            .map((id) => questions.find((q) => q.id === id))
+            .filter(Boolean)
+        : []
+      : currentExam?.questionIds && questions.length > 0
+        ? questions.filter((question) =>
+            currentExam.questionIds.includes(question.id),
+          )
+        : [];
 
   const currentQuestion = questionList[currentIndex];
 
@@ -58,9 +68,25 @@ const ExamTestPage = () => {
   };
 
   useEffect(() => {
-    fetchExamById(examId);
+    if (examId !== "random") {
+      fetchExamById(examId);
+    }
     fetchQuestions();
   }, [fetchExamById, fetchQuestions, examId]);
+
+  useEffect(() => {
+    if (
+      examId === "random" &&
+      questions.length > 0 &&
+      randomQuestions.length === 0
+    ) {
+      const shuffled = [...questions].sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 10).map((question) => question.id);
+      setTimeout(() => {
+        setRandomQuestions(selected);
+      }, 0);
+    }
+  }, [examId, questions, randomQuestions]);
 
   if (questionList.length === 0) {
     return (
@@ -95,7 +121,7 @@ const ExamTestPage = () => {
 
     const historyData = {
       studentId: user.id,
-      examId: Number(examId),
+      examId: examId === "random" ? "random" : Number(examId),
       examTitle: examId === "random" ? "Đề thi ngẫu nhiên" : currentExam.title,
       date: new Date().toISOString(),
       score: correctCount,

@@ -10,10 +10,17 @@ import { Button } from "@/components/ui/button";
 import useQuestion from "@/hooks/useQuestion";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+import { useEffect } from "react";
 
 const TestCard = ({ exam, isRandom = false }) => {
   const navigate = useNavigate();
-  const { questions } = useQuestion("TestCard");
+  const { questions, fetchQuestions } = useQuestion("TestCard");
+
+  useEffect(() => {
+    if (isRandom) {
+      fetchQuestions();
+    }
+  }, [isRandom, fetchQuestions]);
 
   const handleStartRandomExam = () => {
     if (questions.length < 10) {

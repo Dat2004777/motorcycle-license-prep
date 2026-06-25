@@ -319,6 +319,69 @@
         }
       ],
       "id": 4
+    },
+    {
+      "studentId": 2,
+      "examId": "random",
+      "examTitle": "Đề thi ngẫu nhiên",
+      "date": "2026-06-25T08:39:18.220Z",
+      "score": 0,
+      "totalQuestions": 10,
+      "isPassed": false,
+      "failedOnCritical": false,
+      "userAnswers": [
+        {
+          "questionId": 7,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 10,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 4,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 9,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 6,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 8,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 11,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 5,
+          "selected": "",
+          "isCorrect": false
+        }
+      ],
+      "id": 5
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

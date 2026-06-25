@@ -130,6 +130,90 @@
           "isCorrect": true
         }
       ]
+    },
+    {
+      "studentId": 2,
+      "examId": 1,
+      "examTitle": "Đề thi số 1",
+      "date": "2026-06-25T00:44:59.724Z",
+      "score": 0,
+      "totalQuestions": 3,
+      "isPassed": false,
+      "failedOnCritical": true,
+      "userAnswers": [
+        {
+          "questionId": 1,
+          "selected": "A",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "selected": "",
+          "isCorrect": false
+        }
+      ],
+      "id": 2
+    },
+    {
+      "studentId": 2,
+      "examId": 1,
+      "examTitle": "Đề thi số 1",
+      "date": "2026-06-25T00:48:19.455Z",
+      "score": 0,
+      "totalQuestions": 3,
+      "isPassed": false,
+      "failedOnCritical": true,
+      "userAnswers": [
+        {
+          "questionId": 1,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 2,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "selected": "",
+          "isCorrect": false
+        }
+      ],
+      "id": 3
+    },
+    {
+      "studentId": 2,
+      "examId": 1,
+      "examTitle": "Đề thi số 1",
+      "date": "2026-06-25T01:08:38.021Z",
+      "score": 1,
+      "totalQuestions": 3,
+      "isPassed": false,
+      "failedOnCritical": false,
+      "userAnswers": [
+        {
+          "questionId": 1,
+          "selected": "B",
+          "isCorrect": true
+        },
+        {
+          "questionId": 2,
+          "selected": "",
+          "isCorrect": false
+        },
+        {
+          "questionId": 3,
+          "selected": "",
+          "isCorrect": false
+        }
+      ],
+      "id": 4
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -27,7 +27,17 @@ const historyService = {
       });
       return res.data;
     } catch (error) {
-      console.error("Lỗi saveHistory tại historyService: ", error);
+      console.log("Lỗi saveHistory tại historyService: ", error);
+      throw error;
+    }
+  },
+
+  getHistoryByUserId: async (userId) => {
+    try {
+      const res = await api.get(`/histories?studentId=${userId}`);
+      return res.data;
+    } catch (error) {
+      console.log("Lỗi getHistoryByUser tại historyService: ", error);
       throw error;
     }
   },

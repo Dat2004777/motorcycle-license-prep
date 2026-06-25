@@ -6,7 +6,7 @@ const examService = {
       const res = await api.get("/exams");
       return res.data;
     } catch (error) {
-      console.error("Lỗi getAllExams tại examService: ", error);
+      console.log("Lỗi getAllExams tại examService: ", error);
       throw error;
     }
   },
@@ -16,7 +16,7 @@ const examService = {
       const res = await api.get(`/exams/${id}`);
       return res.data;
     } catch (error) {
-      console.error("Lỗi getExamById tại examService: ", error);
+      console.log("Lỗi getExamById tại examService: ", error);
       throw error;
     }
   },

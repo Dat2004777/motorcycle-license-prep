@@ -15,9 +15,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useAuth } from "@/hooks/useAuth";
+import useHistory from "@/hooks/useHistory";
+import { historyDate, historyResult } from "@/lib/data";
+import { useEffect } from "react";
 import { Link } from "react-router";
 
 const HistoryPage = () => {
+  const { user } = useAuth();
+  const { histories, fetchHistoryByUserId } = useHistory("HistoryPage");
+
+  useEffect(() => {
+    fetchHistoryByUserId(user.id);
+  }, [fetchHistoryByUserId, user.id]);
+
   return (
     <>
       <Header />
@@ -40,8 +51,7 @@ const HistoryPage = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-15 uppercase">ID</TableHead>
-                <TableHead className="text-center uppercase">
+                <TableHead className="text-left uppercase">
                   Ngày/ giờ thi
                 </TableHead>
                 <TableHead className="text-center uppercase">
@@ -56,18 +66,23 @@ const HistoryPage = () => {
             </TableHeader>
 
             <TableBody>
-              <TableRow>
-                <TableCell className="w-15">1</TableCell>
-                <TableCell className="text-center">
-                  25/06/2026 - 12:20
-                </TableCell>
-                <TableCell className="text-center">Đề thi số 1</TableCell>
-                <TableCell className="text-center">7</TableCell>
-                <TableCell className="text-center">Đạt</TableCell>
-                <TableCell className="text-center">
-                  <Button>Chi tiết</Button>
-                </TableCell>
-              </TableRow>
+              {histories.map((history) => (
+                <TableRow key={history.id}>
+                  <TableCell className="text-left">
+                    {historyDate(history.date)}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    {history.examTitle}
+                  </TableCell>
+                  <TableCell className="text-center">{history.score}</TableCell>
+                  <TableCell className="text-center">
+                    {historyResult(history.isPassed)}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <Button>Chi tiết</Button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
 
             <TableFooter className="bg-slate-50/50 border-t border-slate-200">

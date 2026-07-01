@@ -63,7 +63,7 @@ assignment/
 - **Realistic Exam Interface**:
   - **10-minute Timer** (600 seconds) automatic countdown.
   - Navigation grid allowing users to easily jump between questions.
-  - **Critical Questions (Câu hỏi điểm liệt) Rule**: If a user answers any critical question incorrectly, the exam immediately results in a **Fail**, regardless of the overall score (simulating real-world A1/A2 exam rules in Vietnam).
+  - **Critical Questions Rule**: If a user answers any critical question incorrectly, the exam immediately results in a **Fail**, regardless of the overall score (simulating real-world A1/A2 exam rules in Vietnam).
   - Passing Criteria: Score $\ge$ 7/10 AND 0 incorrect answers on critical questions.
 - **Exam History Logs**: View all past exam details, scores, dates, status (Passed/Failed), and warnings if failed on critical questions.
 - **Detailed Exam Review**: Review completed exams question-by-question to see correct options versus your selected choices.

@@ -22,7 +22,7 @@ const ExamHeader = ({ setIsConfirmOpen }) => {
 
   return (
     <div className="flex justify-between p-4 shadow-md">
-      <Logo />
+      <Logo disabled={isTestingPage} />
 
       <div>
         {isTestingPage ? (

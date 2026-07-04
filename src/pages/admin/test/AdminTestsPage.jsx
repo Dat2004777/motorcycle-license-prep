@@ -12,9 +12,20 @@ import { Link } from "react-router";
 import TestTable from "@/components/test/TestTable";
 import useExam from "@/hooks/useExam";
 import { useEffect } from "react";
+import CommonPagination from "@/components/CommonPagination";
+import usePagination from "@/hooks/usePagination";
 
 const AdminTestsPage = () => {
   const { exams, fetchExams, handleDeleteTest } = useExam("AdminTestsPage");
+
+  const {
+    page,
+    totalPages,
+    visibleData,
+    handlePrev,
+    handleNext,
+    handlePageChange,
+  } = usePagination(exams);
 
   useEffect(() => {
     fetchExams();
@@ -47,7 +58,20 @@ const AdminTestsPage = () => {
           </div>
 
           <div className="mt-8">
-            <TestTable exams={exams} onDeleteTestClick={handleDeleteTest} />
+            <TestTable
+              exams={visibleData}
+              onDeleteTestClick={handleDeleteTest}
+            />
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <CommonPagination
+              page={page}
+              totalPages={totalPages}
+              onClickPrev={handlePrev}
+              onClickNext={handleNext}
+              onClickPageChange={handlePageChange}
+            />
           </div>
         </main>
       </SidebarProvider>

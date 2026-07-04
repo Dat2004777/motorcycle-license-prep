@@ -4,4 +4,4 @@ export const categoryData = {
   shapes: "Sa hình",
 };
 
-export const itemsPageLimit = 5;
+export const itemsPageLimit = 6;

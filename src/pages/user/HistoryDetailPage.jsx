@@ -64,7 +64,10 @@ const HistoryDetail = () => {
         : [];
   }
 
-  if (!currentHistory || (currentHistory && !hasSnapshot && questions.length === 0)) {
+  if (
+    !currentHistory ||
+    (currentHistory && !hasSnapshot && questions.length === 0)
+  ) {
     return (
       <div className="flex h-screen items-center justify-center text-muted-foreground">
         Đang tải chi tiết bài làm...
@@ -82,7 +85,19 @@ const HistoryDetail = () => {
             Chi tiết kết quả: {currentHistory?.examTitle}
           </h2>
 
-          <p>Điểm số: {currentHistory?.score}</p>
+          <p className="font-bold">
+            Điểm số:{" "}
+            <span className="text-red-500">{currentHistory?.score}</span>
+          </p>
+
+          <p className="font-bold">
+            Kết quả:{" "}
+            <span
+              className={`font-bold ${currentHistory?.isPassed === true ? "text-green-500" : "text-red-500"}`}
+            >
+              {currentHistory?.isPassed === true ? "Đạt" : "Không đạt"}
+            </span>
+          </p>
         </div>
 
         <div className="flex flex-col gap-8 my-8">

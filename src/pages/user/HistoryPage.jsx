@@ -1,3 +1,4 @@
+import CommonPagination from "@/components/CommonPagination";
 import Header from "@/components/layouts/Header";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/table";
 import { useAuth } from "@/hooks/useAuth";
 import useHistory from "@/hooks/useHistory";
+import usePagination from "@/hooks/usePagination";
 import { historyDate, historyResult } from "@/lib/utils";
 import { useEffect } from "react";
 import { Link } from "react-router";
@@ -24,6 +26,14 @@ import { Link } from "react-router";
 const HistoryPage = () => {
   const { user } = useAuth();
   const { histories, fetchHistoryByUserId } = useHistory("HistoryPage");
+  const {
+    page,
+    totalPages,
+    visibleData,
+    handlePrev,
+    handleNext,
+    handlePageChange,
+  } = usePagination(histories);
 
   useEffect(() => {
     fetchHistoryByUserId(user.id);
@@ -51,6 +61,7 @@ const HistoryPage = () => {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="text-left uppercase">STT</TableHead>
                 <TableHead className="text-left uppercase">
                   Ngày/ giờ thi
                 </TableHead>
@@ -66,8 +77,9 @@ const HistoryPage = () => {
             </TableHeader>
 
             <TableBody>
-              {histories.map((history) => (
+              {visibleData.map((history, index) => (
                 <TableRow key={history.id}>
+                  <TableCell className="text-left">{index + 1}</TableCell>
                   <TableCell className="text-left">
                     {historyDate(history.date)}
                   </TableCell>
@@ -98,6 +110,16 @@ const HistoryPage = () => {
               </TableRow>
             </TableFooter>
           </Table>
+        </div>
+
+        <div className="mt-8 flex justify-center">
+          <CommonPagination
+            page={page}
+            totalPages={totalPages}
+            onClickPrev={handlePrev}
+            onClickNext={handleNext}
+            onClickPageChange={handlePageChange}
+          />
         </div>
       </main>
     </>

@@ -1,3 +1,4 @@
+import CommonPagination from "@/components/CommonPagination";
 import AdminSidebar from "@/components/layouts/AdminSidebar";
 import QuestionTable from "@/components/question/QuestionTable";
 import TestContent from "@/components/test/TestContent";
@@ -10,6 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import usePagination from "@/hooks/usePagination";
 import useQuestion from "@/hooks/useQuestion";
 import examService from "@/services/examService";
 import { useEffect, useState } from "react";
@@ -20,6 +22,14 @@ const AdminTestCreatePage = () => {
   const navigate = useNavigate();
 
   const { questions, fetchQuestions } = useQuestion("AdminTestCreatePage");
+  const {
+    page,
+    totalPages,
+    visibleData,
+    handlePrev,
+    handleNext,
+    handlePageChange,
+  } = usePagination(questions);
 
   const [examTitle, setExamTitle] = useState("");
   const [selectedQuestions, setSelectedQuestions] = useState([]);
@@ -106,12 +116,22 @@ const AdminTestCreatePage = () => {
                 </div>
 
                 <QuestionTable
-                  questions={questions}
+                  questions={visibleData}
                   isSelectionMode={true}
                   selectedIds={selectedQuestions}
                   onToggleSelect={handleToggleSelectQuestion}
                 />
               </div>
+            </div>
+
+            <div className="mt-8 flex justify-center">
+              <CommonPagination
+                page={page}
+                totalPages={totalPages}
+                onClickPrev={handlePrev}
+                onClickNext={handleNext}
+                onClickPageChange={handlePageChange}
+              />
             </div>
 
             <div className="flex justify-end gap-4 mt-8">
